@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+
+<div class="container">
+    <h2>Your Orders</h2>
+    <ul>
+        <% orders.forEach(order => { %>
+            <li>
+                <span class="label">Total:</span> ₹<%= order.total %> | <span class="label">Status:</span> <%= order.status %>
+            </li>
+        <% }) %>
+    </ul>
+</div>
+
+<%- include('../partials/footer') %>

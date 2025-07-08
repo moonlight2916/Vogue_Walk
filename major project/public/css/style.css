@@ -1,0 +1,595 @@
+/* General Setup & Base Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8fafd; /* Very light, almost white background */
+    color: #333d51; /* Dark charcoal for primary text */
+    margin: 0;
+    padding: 0;
+    line-height: 1.7;
+    box-sizing: border-box;
+    display: flex; /* Use flexbox for sticky footer */
+    flex-direction: column; /* Stack content and footer */
+    min-height: 100vh; /* Ensure body takes full viewport height */
+}
+
+/* Ensure the HTML and body are full height */
+html {
+    height: 100%;
+}
+
+/* --- Container & Layout --- */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 25px;
+    flex-grow: 1; /* Allows content to expand and push footer down */
+}
+
+/* --- Header --- */
+header {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); /* Blue gradient */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Styles for Vogue_Walk branding in headers (e.g., in partials/header.ejs) */
+header h3.site-logo { /* Targeting a specific H3 if used for logo */
+    font-size: 2em; /* Adjust as needed */
+    margin: 0;
+    font-weight: 700;
+    text-align: left; /* Align logo to the left */
+    padding-left: 20px; /* Add some padding */
+    color: white; /* Ensure it's white */
+    /* If you want to position it in the top-left */
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+/* If header is a flex container and you want a logo on the left */
+header .header-content {
+    display: flex;
+    justify-content: space-between; /* Pushes logo left, title center */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+header .header-content h1 {
+    flex-grow: 1; /* Allows the main title to take available space */
+    text-align: center;
+}
+header .header-content .site-logo {
+    margin-right: auto; /* Pushes the logo to the left */
+    font-size: 2em;
+    font-weight: 700;
+    color: white;
+    padding-left: 0; /* Remove specific padding here if handled by container */
+}
+
+
+/* --- Navbar --- */
+nav {
+    background: #0056b3; /* Darker blue */
+    display: flex;
+    justify-content: center;
+    padding: 12px 0;
+    gap: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1em;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+nav a:hover {
+    background-color: #004085; /* Even darker blue on hover */
+    transform: translateY(-2px);
+}
+
+/* --- Headings (H2) --- */
+h2 {
+    color: #0056b3;
+    font-size: 2.2em;
+    margin-top: 30px;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+    position: relative; /* For underline effect */
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #007bff;
+    border-radius: 2px;
+}
+
+
+/* --- Forms --- */
+form {
+    background: #ffffff;
+    padding: 30px;
+    margin: 40px auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    max-width: 550px;
+    border: 1px solid #e0e6eb;
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555c6b;
+    font-size: 0.95em;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="number"],
+form input[type="url"],
+form textarea {
+    width: calc(100% - 28px); /* Account for padding and border */
+    padding: 14px;
+    margin: 8px 0 20px 0;
+    border-radius: 8px;
+    border: 1px solid #dbe2e8;
+    font-size: 1em;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.04);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:focus,
+form textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.15);
+    outline: none;
+}
+
+form button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 1.15em;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+    width: auto;
+    display: block; /* Ensures button is block level to center or align */
+    margin: 25px auto 0 auto; /* Center the button */
+}
+
+form button[type="submit"]:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Link within forms (e.g., for login/register) */
+form p {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.95em;
+}
+
+form p a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+form p a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* --- Admin Dashboard Buttons (specific styling for anchor tags acting as buttons) --- */
+.admin-dashboard-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.admin-dashboard-links a {
+    display: inline-block;
+    padding: 15px 25px;
+    background-color: #28a745; /* Green for actions */
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.05em;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-dashboard-links a:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Specific color for logout button */
+.admin-dashboard-links a[href="/admin/logout"] {
+    background-color: #dc3545; /* Red for logout */
+}
+
+.admin-dashboard-links a[href="/admin/logout"]:hover {
+    background-color: #c82333;
+}
+
+
+/* --- List Styles (Customers, Orders) --- */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 30px;
+}
+
+ul li {
+    background: white;
+    margin: 15px 0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    display: flex; /* Use flexbox for list items */
+    justify-content: space-between; /* Space out content */
+    align-items: center;
+    font-size: 1.05em;
+    color: #4a5467;
+    border-left: 5px solid #007bff; /* Accent border */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+ul li:hover {
+    transform: translateX(5px); /* Subtle slide effect */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.09);
+}
+
+/* Specific styling for user and order details */
+ul li span.label {
+    font-weight: 600;
+    color: #0056b3;
+    margin-right: 5px;
+}
+
+/* --- Product Display (User Dashboard) --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.product-item {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e0e6eb;
+    display: flex; /* Use flex for internal layout */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: space-between; /* Push button to bottom */
+}
+
+.product-item:hover {
+    transform: translateY(-8px); /* More pronounced lift on hover */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.product-item img {
+    max-width: 100%;
+    height: 200px; /* Fixed height for consistent card size */
+    object-fit: contain; /* Ensures image fits without cropping */
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: #f0f4f7; /* Light background for images */
+}
+
+.product-item h3 {
+    color: #0056b3;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    white-space: nowrap; /* Prevent title from wrapping too early */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis for hidden text */
+}
+
+.product-item p {
+    color: #555c6b;
+    font-size: 0.95em;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Allow description to take space */
+    overflow: hidden; /* Hide overflow text */
+    display: -webkit-box; /* For multi-line ellipsis */
+    -webkit-line-clamp: 3; /* Limit description to 3 lines */
+    line-clamp: 3; /* Standard property for compatibility */
+    -webkit-box-orient: vertical;
+}
+
+.product-item p.price {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #28a745; /* Green for prices */
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.product-item form button {
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%; /* Make button full width of card */
+}
+
+.product-item form button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* --- Cart Page --- */
+.cart-summary {
+    background: #ffffff;
+    padding: 30px;
+    margin: 40px auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    max-width: 600px;
+    border: 1px solid #e0e6eb;
+}
+
+.cart-summary ul {
+    margin-bottom: 30px;
+}
+
+.cart-summary ul li {
+    border-left-color: #ffc107; /* Yellow accent for cart items */
+}
+
+.cart-summary p.empty-cart {
+    text-align: center;
+    font-size: 1.2em;
+    color: #6c757d;
+    padding: 30px;
+    border: 1px dashed #dbe2e8;
+    border-radius: 8px;
+    background-color: #f7f9fb;
+}
+
+/* --- Notification Pages (Order Success) --- */
+.notification {
+    text-align: center;
+    background: #e6f7ff;
+    padding: 60px;
+    border: 2px solid #007bff;
+    margin: 50px auto;
+    max-width: 650px;
+    border-radius: 15px;
+    color: #003366;
+    font-size: 1.2em;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.notification h2 {
+    color: #0056b3;
+    font-size: 2.5em;
+    margin-bottom: 25px;
+    padding-bottom: 0; /* Remove underline for notification H2 */
+}
+
+.notification h2::after {
+    display: none; /* Hide underline for notification H2 */
+}
+
+.notification a.button { /* Styling for button link on notification page */
+    display: inline-block;
+    padding: 12px 25px;
+    margin-top: 30px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.notification a.button:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+}
+
+
+/* --- Footer --- */
+footer {
+    background: #0056b3; /* Darker blue to match navbar */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto; /* Pushes footer to the bottom */
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 0.9em;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+    header .header-content {
+        flex-direction: column;
+        padding: 0 15px;
+    }
+    header .header-content .site-logo {
+        margin-right: 0; /* Reset margin */
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 0;
+    }
+    nav a {
+        padding: 8px 10px;
+        width: 80%; /* Make nav links take more width */
+        text-align: center;
+        margin: 0 auto; /* Center them */
+    }
+
+    h2 {
+        font-size: 1.8em;
+        margin-top: 25px;
+        margin-bottom: 20px;
+    }
+
+    form {
+        padding: 20px;
+        margin: 30px auto;
+        max-width: 90%;
+    }
+
+    form input,
+    form textarea {
+        width: calc(100% - 20px); /* Adjust for smaller padding */
+        padding: 10px;
+    }
+
+    form button[type="submit"] {
+        padding: 12px 20px;
+        font-size: 1.05em;
+    }
+
+    .admin-dashboard-links {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 30px;
+    }
+
+    ul li {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr; /* Stack products on smaller screens */
+        gap: 20px;
+    }
+
+    .product-item img {
+        height: 180px;
+    }
+
+    .notification {
+        padding: 40px 20px;
+        font-size: 1.1em;
+        max-width: 90%;
+    }
+    
+    .notification h2 {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+    header .header-content .site-logo {
+        font-size: 1.5em;
+    }
+
+    nav a {
+        font-size: 0.95em;
+    }
+
+    h2 {
+        font-size: 1.6em;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    form input,
+    form textarea {
+        font-size: 0.9em;
+    }
+
+    form button[type="submit"] {
+        font-size: 1em;
+    }
+
+    .admin-dashboard-links a {
+        font-size: 1em;
+        padding: 12px 20px;
+    }
+
+    ul li {
+        font-size: 0.9em;
+    }
+
+    .product-item img {
+        height: 150px;
+    }
+
+    .product-item h3 {
+        font-size: 1.2em;
+    }
+
+    .notification {
+        padding: 25px 15px;
+        font-size: 1em;
+    }
+    .notification h2 {
+        font-size: 1.8em;
+    }
+}

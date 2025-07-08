@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+
+<div class="container">
+    <h2>All Customers</h2>
+    <ul>
+        <% users.forEach(user => { %>
+            <li>
+                <span class="label">Name:</span> <%= user.name %> <span class="label">| Email:</span> <%= user.email %>
+            </li>
+        <% }) %>
+    </ul>
+</div>
+
+<%- include('../partials/footer') %>

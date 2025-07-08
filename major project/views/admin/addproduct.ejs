@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+<h2>Add Product</h2>
+<form method="POST" action="/admin/add-product">
+  <input type="text" name="name" placeholder="Name" required />
+  <textarea name="description" placeholder="Description" required></textarea>
+  <input type="number" name="price" placeholder="Price" required />
+  <input type="text" name="image" placeholder="Image URL" />
+  <button type="submit">Add Product</button>
+</form>
+
+
+<%- include('../partials/footer') %>

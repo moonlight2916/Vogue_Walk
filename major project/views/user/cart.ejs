@@ -1,0 +1,31 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+
+<div class="container cart-summary">
+    <h2>Your Cart</h2>
+    <ul>
+        <% if (cart && cart.products && cart.products.length > 0) { %>
+            <% cart.products.forEach(p => { %>
+                <li>
+                    <% if (p.productId) { %>
+                        <span class="label">Product:</span> <%= p.productId.name %> - ₹<%= p.productId.price %> x <%= p.quantity %>
+                    <% } else { %>
+                        <span class="label">Product:</span> [Product removed or not found]
+                    <% } %>
+                </li>
+            <% }) %>
+        <% } else { %>
+            <li>Your cart is empty.</li>
+        <% } %>
+    </ul>
+
+    <% if (cart && cart.products && cart.products.length > 0) { %>
+        <form method="POST" action="/user/place-order">
+            <label for="deliveryAddress">Delivery Address</label>
+            <textarea id="deliveryAddress" name="address" placeholder="Enter your full delivery address" rows="4" required></textarea>
+            <button type="submit">Place Order (Cash on Delivery)</button>
+        </form>
+    <% } %>
+</div>
+
+<%- include('../partials/footer') %>
